@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "langchain_g4f"
+version = "1.0.0"
+description = ""
+authors = []
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "langchain>=0.0.225",
+    "gpt4free @ git+https://github.com/xtekky/gpt4free.git",
+]
+
+[tool.setuptools.packages.find]
+include = ["langchain_g4f"]
