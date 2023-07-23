@@ -17,21 +17,25 @@ class G4FLLM(LLM):
 
     @property
     def _llm_type(self) -> str:
-        return 'custom'
+        return "custom"
 
-    def _call(self, prompt: str, stop: Optional[List[str]] = None,
-              run_manager: Optional[CallbackManagerForLLMRun] = None, **kwargs: Any) -> str:
-
+    def _call(
+        self,
+        prompt: str,
+        stop: Optional[List[str]] = None,
+        run_manager: Optional[CallbackManagerForLLMRun] = None,
+        **kwargs: Any,
+    ) -> str:
         create_kwargs = {} if self.create_kwargs is None else self.create_kwargs.copy()
         if self.model is not None:
-            create_kwargs['model'] = self.model
+            create_kwargs["model"] = self.model
         if self.provider is not None:
-            create_kwargs['provider'] = self.provider
+            create_kwargs["provider"] = self.provider
         if self.auth is not None:
-            create_kwargs['auth'] = self.auth
+            create_kwargs["auth"] = self.auth
 
         text = g4f.ChatCompletion.create(
-            messages=[{'role': 'user', 'content': prompt}],
+            messages=[{"role": "user", "content": prompt}],
             **create_kwargs,
         )
         if stop is not None:
@@ -42,8 +46,8 @@ class G4FLLM(LLM):
     def _identifying_params(self) -> Mapping[str, Any]:
         """Get the identifying parameters."""
         return {
-            'model': self.model,
-            'provider': self.provider,
-            'auth': self.auth,
-            'create_kwargs': self.create_kwargs,
+            "model": self.model,
+            "provider": self.provider,
+            "auth": self.auth,
+            "create_kwargs": self.create_kwargs,
         }
