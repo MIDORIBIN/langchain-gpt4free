@@ -10,9 +10,9 @@ def main():
         provider=Provider.Aichat,
     )
 
-    res = llm('hello')
+    res = llm("hello")
     print(res)  # Hello! How can I assist you today?
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

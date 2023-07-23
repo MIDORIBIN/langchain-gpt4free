@@ -39,6 +39,8 @@ if __name__ == '__main__':
 
 The above sample code demonstrates the basic usage of langchain_g4f. Choose the appropriate model and provider, initialize the LLM, and then pass input text to the LLM object to obtain the result.
 
+For other samples, please refer to the following [sample directory](./sample/).
+
 ## Support and Bug Reports
 
 For support and bug reports, please use the GitHub Issues page. 
