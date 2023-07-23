@@ -29,6 +29,7 @@ def main():
     )
 
     print(simple_sequential_chain("tokyo"))
+    # {'input': 'tokyo', 'output': 'The train route from Tokyo Station to the Tokyo Skytree is:\n\n1. Take the JR Yamanote Line or the Keihin-Tohoku Line from Tokyo Station to Ueno Station.\n\n2. Transfer to the Tokyo Metro Hibiya Line at Ueno Station and take the train towards Kita-senju.\n\n3. Get off at Oshiage Station, which is the closest station to the Tokyo Skytree.\n\nThe journey takes approximately 20-25 minutes and costs around 240-280 yen depending on the train line and time of day.'}
 
 
 if __name__ == "__main__":

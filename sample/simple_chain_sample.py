@@ -17,6 +17,7 @@ def main():
     )
     chain = LLMChain(llm=llm, prompt=prompt_template)
     print(chain("tokyo"))
+    # {'location': 'tokyo', 'text': 'Tokyo has many amazing tourist attractions, but one of the most popular is the Tokyo Tower. Standing at 333 meters tall, it offers stunning views of the city skyline. Additionally, the historic Meiji Shrine and the bustling and vibrant neighborhood of Shibuya with its famous scramble crossing are also top attractions.'}
 
 
 if __name__ == "__main__":
