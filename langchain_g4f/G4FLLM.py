@@ -14,7 +14,7 @@ class G4FLLM(LLM):
     # Provider.Provider
     provider: Optional[ModuleType] = None
     auth: Optional[Union[str, bool]] = None
-    create_kwargs: Optional[dict] = None
+    create_kwargs: Optional[dict[str, Any]] = None
 
     @property
     def _llm_type(self) -> str:
@@ -28,20 +28,19 @@ class G4FLLM(LLM):
         **kwargs: Any,
     ) -> str:
         create_kwargs = {} if self.create_kwargs is None else self.create_kwargs.copy()
-        if self.model is not None:
-            create_kwargs["model"] = self.model
+        create_kwargs["model"] = self.model
         if self.provider is not None:
             create_kwargs["provider"] = self.provider
         if self.auth is not None:
             create_kwargs["auth"] = self.auth
 
-        text = ChatCompletion.create(
+        text = ChatCompletion.create(  # type: ignore
             messages=[{"role": "user", "content": prompt}],
             **create_kwargs,
         )
-        if stop is not None:
-            text = enforce_stop_tokens(text, stop)
-        return text
+        if stop is not None and type(stop) is str:
+            text = enforce_stop_tokens(text, stop)  # type: ignore
+        return text  # type: ignore
 
     @property
     def _identifying_params(self) -> Mapping[str, Any]:
