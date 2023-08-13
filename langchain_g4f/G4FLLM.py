@@ -1,7 +1,8 @@
 from types import ModuleType
-from typing import Optional, List, Any, Mapping, Union
+from typing import Any, List, Mapping, Optional, Union
 
-import g4f
+from g4f import ChatCompletion
+from g4f.models import Model
 from langchain.callbacks.manager import CallbackManagerForLLMRun
 from langchain.llms.base import LLM
 from langchain.llms.utils import enforce_stop_tokens
@@ -9,7 +10,7 @@ from langchain.llms.utils import enforce_stop_tokens
 
 class G4FLLM(LLM):
     # Model.model or str
-    model: Union[type, str]
+    model: Union[Model, str]
     # Provider.Provider
     provider: Optional[ModuleType] = None
     auth: Optional[Union[str, bool]] = None
@@ -34,7 +35,7 @@ class G4FLLM(LLM):
         if self.auth is not None:
             create_kwargs["auth"] = self.auth
 
-        text = g4f.ChatCompletion.create(
+        text = ChatCompletion.create(
             messages=[{"role": "user", "content": prompt}],
             **create_kwargs,
         )
