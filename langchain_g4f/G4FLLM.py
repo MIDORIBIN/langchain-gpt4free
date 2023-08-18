@@ -1,18 +1,16 @@
-from types import ModuleType
 from typing import Any, List, Mapping, Optional, Union
 
 from g4f import ChatCompletion
 from g4f.models import Model
+from g4f.Provider.base_provider import BaseProvider
 from langchain.callbacks.manager import CallbackManagerForLLMRun
 from langchain.llms.base import LLM
 from langchain.llms.utils import enforce_stop_tokens
 
 
 class G4FLLM(LLM):
-    # Model.model or str
     model: Union[Model, str]
-    # Provider.Provider
-    provider: Optional[ModuleType] = None
+    provider: Optional[type[BaseProvider]] = None
     auth: Optional[Union[str, bool]] = None
     create_kwargs: Optional[dict[str, Any]] = None
 
