@@ -32,13 +32,16 @@ class G4FLLM(LLM):
         if self.auth is not None:
             create_kwargs["auth"] = self.auth
 
-        text = ChatCompletion.create(  # type: ignore
+        text = ChatCompletion.create(
             messages=[{"role": "user", "content": prompt}],
             **create_kwargs,
         )
-        if stop is not None and type(stop) is str:
-            text = enforce_stop_tokens(text, stop)  # type: ignore
-        return text  # type: ignore
+
+        # Generator -> str
+        text = text if type(text) is str else "".join(text)
+        if stop is not None:
+            text = enforce_stop_tokens(text, stop)
+        return text
 
     @property
     def _identifying_params(self) -> Mapping[str, Any]:
