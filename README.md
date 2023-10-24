@@ -11,7 +11,7 @@ pip install git+https://github.com/MIDORIBIN/langchain-gpt4free.git
 ```
 or
 ```shell
-pip install langchain-gpt4free
+pip install langchain-g4f
 ```
 
 This command will install langchain_g4f.
