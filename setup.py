@@ -20,5 +20,6 @@ setup(
         "Operating System :: OS Independent",
     ],
    install_requires=load_requirements("requirements.txt"), 
+   python_requires=">=3.10",
 )
 
